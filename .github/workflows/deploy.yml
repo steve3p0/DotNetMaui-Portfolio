@@ -1,4 +1,4 @@
-name: Deploy Blazor Web App to GitHub Pages
+name: Deploy Blazor App to GitHub Pages
 
 on:
   push:
@@ -21,7 +21,6 @@ jobs:
           dotnet-version: '9.0.x'
 
       - name: Publish Blazor WebAssembly app
-        # This targets the Blazor client project, NOT the MAUI or Web Server projects
         run: dotnet publish DotNetMaui.Web.Client/DotNetMaui.Web.Client.csproj -c Release -o release -p:BaseHref=/DotNetMaui-Portfolio/
 
       - name: Deploy to GitHub Pages
