@@ -1,11 +1,11 @@
 {
   "mainAssemblyName": "DotNetMaui.Web.Client",
   "resources": {
-    "hash": "sha256-uNhp5LTfTHMOBuN7mpWg85ybL4dMQzd5UnGnAofrbCo=",
+    "hash": "sha256-TQV7/8p3Fil7i8WUkc910gLdjqLMd3JMqOuPpv6CJVE=",
     "fingerprinting": {
-      "Microsoft.AspNetCore.Components.4jadli1mzw.wasm": "Microsoft.AspNetCore.Components.wasm",
+      "Microsoft.AspNetCore.Components.08p0kauap6.wasm": "Microsoft.AspNetCore.Components.wasm",
       "Microsoft.AspNetCore.Components.Web.7apenvi18o.wasm": "Microsoft.AspNetCore.Components.Web.wasm",
-      "Microsoft.AspNetCore.Components.WebAssembly.smtvrh1hz3.wasm": "Microsoft.AspNetCore.Components.WebAssembly.wasm",
+      "Microsoft.AspNetCore.Components.WebAssembly.f7d5ki1b7c.wasm": "Microsoft.AspNetCore.Components.WebAssembly.wasm",
       "Microsoft.Extensions.Configuration.ell6o7ap7i.wasm": "Microsoft.Extensions.Configuration.wasm",
       "Microsoft.Extensions.Configuration.Abstractions.f9jq6u05xu.wasm": "Microsoft.Extensions.Configuration.Abstractions.wasm",
       "Microsoft.Extensions.Configuration.Json.77nptesqpn.wasm": "Microsoft.Extensions.Configuration.Json.wasm",
@@ -32,8 +32,8 @@
       "System.Text.Json.jjhatov2mh.wasm": "System.Text.Json.wasm",
       "System.Text.RegularExpressions.k0eu65ve7y.wasm": "System.Text.RegularExpressions.wasm",
       "System.Private.CoreLib.b9xdh37xlj.wasm": "System.Private.CoreLib.wasm",
-      "DotNetMaui.Shared.yd315f2oqq.wasm": "DotNetMaui.Shared.wasm",
-      "DotNetMaui.Web.Client.kael60pnpt.wasm": "DotNetMaui.Web.Client.wasm",
+      "DotNetMaui.Shared.yv4k1y0b5a.wasm": "DotNetMaui.Shared.wasm",
+      "DotNetMaui.Web.Client.htt247m131.wasm": "DotNetMaui.Web.Client.wasm",
       "dotnet.js": "dotnet.js",
       "dotnet.native.uhsveqo9bs.js": "dotnet.native.js",
       "dotnet.native.swgexbmoy7.wasm": "dotnet.native.wasm",
@@ -61,9 +61,9 @@
       "System.Private.CoreLib.b9xdh37xlj.wasm": "sha256-YcmB/73IFTObiYgQkNuggo5iHB/rEvQPvUPMSrSUfeA="
     },
     "assembly": {
-      "Microsoft.AspNetCore.Components.4jadli1mzw.wasm": "sha256-cDzRamvYW+nh7UAGcideIws/wZs4seVd4j7Wtk9bxmY=",
+      "Microsoft.AspNetCore.Components.08p0kauap6.wasm": "sha256-UCTxBr9bm8CeBIFHn323Bb/mgH1na7Aig10uFsvBLeo=",
       "Microsoft.AspNetCore.Components.Web.7apenvi18o.wasm": "sha256-fyqnB2DYAO80AStwVkG2g+mFplGXI54QNWpUbk5VoiE=",
-      "Microsoft.AspNetCore.Components.WebAssembly.smtvrh1hz3.wasm": "sha256-xNYfyq3ne+1wRpWGtWANB85g1Wh5gpFtk3YUYnYFEKs=",
+      "Microsoft.AspNetCore.Components.WebAssembly.f7d5ki1b7c.wasm": "sha256-G74GO3JpQ5AIhvZ1OA8nJzqsKV3qYlQPuMTvoZbOyrk=",
       "Microsoft.Extensions.Configuration.ell6o7ap7i.wasm": "sha256-0iZA+rfvr3lLmK5V18g0LZCU41c3mbTL9jNYRoavdB0=",
       "Microsoft.Extensions.Configuration.Abstractions.f9jq6u05xu.wasm": "sha256-AyL87FvJMf14Dcn8HeQ3n2veg/RQGVGCjfpJPt1RQC4=",
       "Microsoft.Extensions.Configuration.Json.77nptesqpn.wasm": "sha256-TUkUL2Leb3zmGe8ZZUHAzyb8vZoEzua1H8f8stc7xRw=",
@@ -88,8 +88,8 @@
       "System.Text.Encodings.Web.suy6578t21.wasm": "sha256-9FZLttu5iPwF9M7jckzJNogrhKhsHb9VlRtzW9+OH44=",
       "System.Text.Json.jjhatov2mh.wasm": "sha256-sXuIXXV6GDrgOHS7hgPVUT0qP7QuwAvYcUwGzYyxrY0=",
       "System.Text.RegularExpressions.k0eu65ve7y.wasm": "sha256-dAw+dIKra7ljgRE+eVWL5wTVKKXPJi7x/AdHfLLcFDs=",
-      "DotNetMaui.Shared.yd315f2oqq.wasm": "sha256-Zqi2uZGr7rw+YVj6NyxT1QU1ZfU4Yoq77o5OF8H0XfE=",
-      "DotNetMaui.Web.Client.kael60pnpt.wasm": "sha256-nFFmWnxOc00BoHmJ64xPNYLVtrsSK61Jz9v1fH8gDvU="
+      "DotNetMaui.Shared.yv4k1y0b5a.wasm": "sha256-QoHEHDKrpoDa3Grc4jgJcbDnYT2X3W4awjJxTqn64TU=",
+      "DotNetMaui.Web.Client.htt247m131.wasm": "sha256-i1xsTJmcTQufH+zYbxe2xYH1jXYSlABKd7jkjETtm+M="
     }
   },
   "cacheBootResources": true,
