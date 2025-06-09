@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-and-deploy:
-    runs-on: ubuntu-latest # This is correct and the most efficient runner
+    runs-on: ubuntu-latest # Correct and most efficient
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -17,13 +17,12 @@ jobs:
         with:
           dotnet-version: '9.0.x'
 
-      # The MAUI workload install step has been completely REMOVED. It is not needed.
-
       - name: Publish Blazor WebAssembly app
-        # This points to the correct Blazor WASM client project.
+        # This targets the correct Blazor client project
         run: dotnet publish DotNetMaui.Web.Client/DotNetMaui.Web.Client.csproj -c Release -o release -p:BaseHref=/DotNetMaui-Portfolio/
 
       - name: Deploy to GitHub Pages
+        # This action handles all permissions and git commands for you
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
