@@ -24,7 +24,7 @@ jobs:
         run: dotnet workload install maui
 
       - name: Publish .NET MAUI Blazor app
-        run: dotnet publish DotNetMaui/DotNetMaui.csproj -c Release -o release -p:BaseHref=/DotNetMaui-Portfolio/ -f net9.0
+        run: dotnet publish DotNetMaui/DotNetMaui.csproj -c Release -o release -p:BaseHref=/DotNetMaui-Portfolio/
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
