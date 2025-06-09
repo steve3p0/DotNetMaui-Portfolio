@@ -1,4 +1,4 @@
-name: Deploy DotNetMauiPortfolio to GitHub Pages
+name: Deploy Blazor Web App to GitHub Pages
 
 on:
   push:
@@ -7,7 +7,10 @@ on:
 
 jobs:
   build-and-deploy:
-    runs-on: ubuntu-latest # This is correct and the most efficient runner
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -15,13 +18,10 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '9.0.x' # From your project files
-
-      - name: Install .NET MAUI Workload
-        run: dotnet workload install maui
+          dotnet-version: '9.0.x'
 
       - name: Publish Blazor WebAssembly app
-        # This points to the correct Blazor WASM client project.
+        # This targets the Blazor client project, NOT the MAUI or Web Server projects
         run: dotnet publish DotNetMaui.Web.Client/DotNetMaui.Web.Client.csproj -c Release -o release -p:BaseHref=/DotNetMaui-Portfolio/
 
       - name: Deploy to GitHub Pages
