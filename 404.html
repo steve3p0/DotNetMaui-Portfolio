@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Redirecting...</title>
+    <script>
+    // Get the part of the URL that comes after the domain
+    const path = window.location.pathname;
+
+    // The segment to redirect to. For a project site like yours,
+    // this is the repository name. This MUST match your repo name exactly.
+    const repoName = '/DotNetMaui-Portfolio';
+
+    // The target location for the redirect
+    const l = window.location;
+    const target = l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') + repoName + '/';
+
+    // Store the original path and redirect
+    sessionStorage.redirect = path.slice(repoName.length);
+    l.replace(target);
+    </script>
+</head>
+<body>
+    <p>If you are not redirected automatically, follow this <a href="/DotNetMaui-Portfolio/">link</a>.</p>
+</body>
+</html>
