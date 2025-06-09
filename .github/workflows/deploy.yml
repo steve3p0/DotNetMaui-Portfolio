@@ -1,4 +1,4 @@
-name: Deploy Blazor App to GitHub Pages
+name: Deploy Blazor App with Caching to GitHub Pages
 
 on:
   push:
@@ -20,7 +20,22 @@ jobs:
         with:
           dotnet-version: '9.0.x'
 
+      # This new step caches the downloaded libraries
+      - name: Cache NuGet packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.nuget/packages
+          # Create a unique key for the cache based on the project files
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget-
+
+      - name: Install dependencies
+        # This restores packages from the cache if available
+        run: dotnet restore DotNetMaui.Web.Client/DotNetMaui.Web.Client.csproj
+
       - name: Publish Blazor WebAssembly app
+        # This command uses the restored packages to build the app
         run: dotnet publish DotNetMaui.Web.Client/DotNetMaui.Web.Client.csproj -c Release -o release -p:BaseHref=/DotNetMaui-Portfolio/
 
       - name: Deploy to GitHub Pages
