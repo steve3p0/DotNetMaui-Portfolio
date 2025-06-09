@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "DotNetMaui.Web.Client",
   "resources": {
-    "hash": "sha256-RlGlhAZ1jn76Wa0cUMHrmK6sqf29csFBuw+4Fdejn/E=",
+    "hash": "sha256-FhUW4PDHajpFZNwGBx+JwrkUAV8hTD6UsKgEK0pvCZg=",
     "fingerprinting": {
       "Microsoft.AspNetCore.Components.4jadli1mzw.wasm": "Microsoft.AspNetCore.Components.wasm",
       "Microsoft.AspNetCore.Components.Web.7apenvi18o.wasm": "Microsoft.AspNetCore.Components.Web.wasm",
@@ -32,8 +32,8 @@
       "System.Text.Json.jjhatov2mh.wasm": "System.Text.Json.wasm",
       "System.Text.RegularExpressions.k0eu65ve7y.wasm": "System.Text.RegularExpressions.wasm",
       "System.Private.CoreLib.b9xdh37xlj.wasm": "System.Private.CoreLib.wasm",
-      "DotNetMaui.Shared.0sir9xeb07.wasm": "DotNetMaui.Shared.wasm",
-      "DotNetMaui.Web.Client.7xh2cgqtn3.wasm": "DotNetMaui.Web.Client.wasm",
+      "DotNetMaui.Shared.sbxr46z7tp.wasm": "DotNetMaui.Shared.wasm",
+      "DotNetMaui.Web.Client.5v74lz3ann.wasm": "DotNetMaui.Web.Client.wasm",
       "dotnet.js": "dotnet.js",
       "dotnet.native.uhsveqo9bs.js": "dotnet.native.js",
       "dotnet.native.swgexbmoy7.wasm": "dotnet.native.wasm",
@@ -88,8 +88,8 @@
       "System.Text.Encodings.Web.suy6578t21.wasm": "sha256-9FZLttu5iPwF9M7jckzJNogrhKhsHb9VlRtzW9+OH44=",
       "System.Text.Json.jjhatov2mh.wasm": "sha256-sXuIXXV6GDrgOHS7hgPVUT0qP7QuwAvYcUwGzYyxrY0=",
       "System.Text.RegularExpressions.k0eu65ve7y.wasm": "sha256-dAw+dIKra7ljgRE+eVWL5wTVKKXPJi7x/AdHfLLcFDs=",
-      "DotNetMaui.Shared.0sir9xeb07.wasm": "sha256-MPuaryKWeq3HJppPbqZZFrNaBr6GQ4Z1KFlGunU5BJs=",
-      "DotNetMaui.Web.Client.7xh2cgqtn3.wasm": "sha256-O3MX2TiZiXJU1eHYuSU5Lj3FgdrvXoy8KTb1vuufrSE="
+      "DotNetMaui.Shared.sbxr46z7tp.wasm": "sha256-eC0e+XTXISoYoN+qXCy9877m76LlaRuFcHB/FXBHF7g=",
+      "DotNetMaui.Web.Client.5v74lz3ann.wasm": "sha256-L65PFThxjBa4dhch/Z1heqak0Zo/ACrhccnqz37UnwA="
     }
   },
   "cacheBootResources": true,
