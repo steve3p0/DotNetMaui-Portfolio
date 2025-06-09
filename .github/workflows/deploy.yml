@@ -1,10 +1,8 @@
 name: Deploy DotNetMauiPortfolio to GitHub Pages
 
 on:
-  # This workflow runs on pushes to the 'main' branch
   push:
     branches: [ main ]
-  # This allows you to run the workflow manually from the Actions tab
   workflow_dispatch:
 
 jobs:
@@ -17,17 +15,19 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          # This should match the .NET version in your .csproj file
           dotnet-version: '9.0.x'
 
+      # =================================================
+      # === ADD THIS STEP TO INSTALL MAUI WORKLOADS ===
+      # =================================================
+      - name: Install .NET MAUI Workload
+        run: dotnet workload install maui
+
       - name: Publish .NET MAUI Blazor app
-        # This command builds the project and places the output in a folder named 'release'
         run: dotnet publish DotNetMaui/DotNetMaui.csproj -c Release -o release -p:BaseHref=/DotNetMaui-Portfolio/
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          # This tells the action to deploy the contents of the 'wwwroot' folder,
-          # which is where the final compiled website files are located.
           publish_dir: ./release/wwwroot
