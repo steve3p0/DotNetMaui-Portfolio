@@ -1,0 +1,239 @@
+﻿@page "/hobbies"
+@inject HttpClient Http
+@using System.Text.Json
+
+
+<PageTitle>Hobbies</PageTitle>
+
+<h1>Hobbies &amp; Interests</h1>
+
+<p class="lead">
+    I was born and bred in my hometown of Portland, Oregon, also known as the City of Roses.
+    As a native “Portlagorian,” I love my city and what the surrounding areas have to offer.
+</p>
+
+<div class="static-content">
+    <p>
+        Directly to our north is the Columbia River, the second-largest river in North America.
+        The Pacific Ocean is a two-hour drive, and skiing on Mt. Hood is less than an hour away.
+        I really enjoy watching our local MLS team, the Portland Timbers.
+    </p>
+    <p>
+        In my free time I like spending time with my two adult children, playing in a beer-league
+        ice-hockey team, and following the Portland Timbers Football Club.
+    </p>
+</div>
+
+<!--  ███  Dynamic Cards  ███ -->
+<div class="row mt-4 g-4">
+
+    <!-- Weather -------------------------------------------------------- -->
+    <div class="col-lg-4">
+        <div class="card h-100">
+            <div class="card-header">
+                <i class="bi bi-thermometer-sun me-2"></i>
+                Weather in Portland, OR
+            </div>
+            <div class="card-body">
+                @if (_weatherErr is not null)
+                {
+                    <p class="text-danger small">@_weatherErr</p>
+                }
+                else if (_weather is null)
+                {
+                    <p class="text-muted">Loading weather…</p>
+                }
+                else
+                {
+                    <h5 class="card-title">@_weather!.Temperature&nbsp;°@_weather.Unit</h5>
+                    <p class="card-text">@_weather.Summary</p>
+                    <p class="card-text">
+                        <small class="text-muted">Source: weather.gov</small>
+                    </p>
+                }
+            </div>
+        </div>
+    </div>
+
+    <!-- Timbers RSS ----------------------------------------------------- -->
+    <div class="col-lg-4">
+        <div class="card h-100">
+            <div class="card-header d-flex align-items-center">
+                <img src="https://images.mlssoccer.com/image/upload/assets/logos/POR.svg"
+                     style="height:24px" class="me-2" />
+                Portland Timbers News
+            </div>
+            <div class="card-body">
+                @if (_timbersErr is not null)
+                {
+                    <p class="text-danger small">@_timbersErr</p>
+                }
+                else if (_timbers is null)
+                {
+                    <p class="text-muted">Loading news…</p>
+                }
+                else
+                {
+                    <ul class="list-unstyled">
+                        @foreach (var item in _timbers!.Take(3))
+                        {
+                            <li class="d-flex justify-content-between align-items-center mt-2">
+                                <span style="font-size:0.9rem">@item.title</span>
+                                <a href="@item.link" target="_blank" rel="noopener noreferrer"
+                                   class="text-secondary">
+                                    <i class="bi bi-box-arrow-up-right"></i>
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                }
+            </div>
+        </div>
+    </div>
+
+    <!-- Winterhawks RSS ------------------------------------------------- -->
+    <div class="col-lg-4">
+        <div class="card h-100">
+            <div class="card-header d-flex align-items-center">
+                <img src="https://static01.nyt.com/athletic/uploads/wp/2021/07/14123749/PHW-Primary_Logo-RGB.png"
+                     style="height:24px" class="me-2" />
+                Portland Winterhawks News
+            </div>
+            <div class="card-body">
+                @if (_winterErr is not null)
+                {
+                    <p class="text-danger small">@_winterErr</p>
+                }
+                else if (_winter is null)
+                {
+                    <p class="text-muted">Loading news…</p>
+                }
+                else
+                {
+                    <ul class="list-unstyled">
+                        @foreach (var item in _winter!.Take(3))
+                        {
+                            <li class="d-flex justify-content-between align-items-center mt-2">
+                                <span style="font-size:0.9rem">@item.title</span>
+                                <a href="@item.link" target="_blank" rel="noopener noreferrer"
+                                   class="text-secondary">
+                                    <i class="bi bi-box-arrow-up-right"></i>
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                }
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@code {
+    /* ---------- state ---------- */
+    private WeatherInfo? _weather;
+    private List<RssItem>? _timbers;
+    private List<RssItem>? _winter;
+
+    private string? _weatherErr;
+    private string? _timbersErr;
+    private string? _winterErr;
+
+    /* ---------- lifecycle ---------- */
+    protected override async Task OnInitializedAsync()
+    {
+        // fire-and-forget, but keep the component alive
+        _ = LoadWeatherAsync(45.52, -122.68);
+        _ = LoadRssAsync(
+            "https://rss.app/feeds/IRpM5V1FDbUrwcq8.xml",
+            news => _timbers = news,
+            err  => _timbersErr = err);
+
+        _ = LoadRssAsync(
+            "https://rss.app/feeds/viXRSBHtvnKSjL7t.xml",
+            news => _winter  = news,
+            err  => _winterErr = err);
+    }
+
+    /* ---------- helpers ---------- */
+    private async Task LoadWeatherAsync(double lat, double lon)
+    {
+        try
+        {
+            Http.DefaultRequestHeaders.UserAgent.ParseAdd("PortfolioExample/1.0");
+
+            // 1. points -> forecast URL
+            var pointsJson = await Http.GetStringAsync($"https://api.weather.gov/points/{lat},{lon}");
+            var wPoints = JsonSerializer.Deserialize<WeatherPoints>(pointsJson)!;
+            var forecastUrl = wPoints.properties.forecast;
+
+            // 2. forecast -> first period
+            var forecastJson = await Http.GetStringAsync(forecastUrl);
+            var wForecast = JsonSerializer.Deserialize<WeatherRoot>(forecastJson)!;
+            var p = wForecast.properties.periods[0];
+
+            _weather = new WeatherInfo
+            {
+                Temperature = p.temperature,
+                Unit        = p.temperatureUnit,
+                Summary     = p.shortForecast
+            };
+        }
+        catch (Exception ex)
+        {
+            _weatherErr = "Could not load weather.";
+            Console.WriteLine($"Weather error: {ex.Message}");
+        }
+
+        StateHasChanged();
+    }
+
+    private async Task LoadRssAsync(
+        string rssUrl,
+        Action<List<RssItem>> onSuccess,
+        Action<string> onError)
+    {
+        try
+        {
+            var apiUrl = $"https://api.rss2json.com/v1/api.json?rss_url={Uri.EscapeDataString(rssUrl)}";
+            var json   = await Http.GetStringAsync(apiUrl);
+            var rss    = JsonSerializer.Deserialize<RssRoot>(json)!;
+
+            if (rss.status == "ok")
+                onSuccess(rss.items);
+            else
+                onError(rss.message ?? "RSS error.");
+        }
+        catch (Exception ex)
+        {
+            onError($"RSS error: {ex.Message}");
+        }
+
+        StateHasChanged();
+    }
+
+    /* ---------- tiny DTOs ---------- */
+    private sealed record WeatherInfo
+    {
+        public int    Temperature { get; init; }
+        public string Unit      { get; init; } = "";
+        public string Summary   { get; init; } = "";
+    }
+
+    // weather.gov → points
+    private sealed record WeatherPoints(WeatherPointsProp properties);
+    private sealed record WeatherPointsProp(string forecast);
+
+    // weather.gov → forecast
+    private sealed record WeatherRoot(WeatherProp properties);
+    private sealed record WeatherProp(List<WeatherPeriod> periods);
+    private sealed record WeatherPeriod(int temperature,
+                                        string temperatureUnit,
+                                        string shortForecast);
+
+    // rss2json
+    private sealed record RssRoot(string status,
+                                  string? message,
+                                  List<RssItem> items);
+    private sealed record RssItem(string title, string link);
+}

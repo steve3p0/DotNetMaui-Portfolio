@@ -1,14 +1,52 @@
 ﻿@page "/"
-@using DotNetMaui.Shared.Services
-@inject IFormFactor FormFactor
-
 <PageTitle>Home</PageTitle>
 
-<h1>Hello, world!</h1>
+<h1>About Me</h1>
 
-Welcome to your new app running on <em>@factor</em> using <em>@platform</em>.
+<p class="lead">
+    Hello, I'm a dedicated computational linguist with a passion for machine translation,
+    breaking down language barriers, and helping rebuild the Tower of Babel, one brick
+    at a time.
+</p>
 
-@code {
-    private string factor => FormFactor.GetFormFactor();
-    private string platform => FormFactor.GetPlatform();
-}
+<div class="row mt-4 align-items-center">
+
+    <!-- Main text content column -->
+    <div class="col-md-8">
+        <p>
+            I'm currently a PhD student in computer science at Portland State University.
+            A product of an immigrant father from Montenegro and a mother who taught ESL,
+            I grew up in a multilingual household and traveled frequently to Europe. This
+            early exposure to different languages and cultures sparked my lifelong
+            fascination with language and the power of communication.
+        </p>
+        <p>
+            I was also inspired to study technology after watching Star Wars as a child.
+            My favorite character was C-3PO, a protocol droid <q>fluent in over six million
+            forms of communication.</q>
+        </p>
+        <p>
+            <i><strong>My goal is to help people communicate better, no matter what
+            language they speak.</strong></i>
+            I believe that language is a bridge that connects us all, and I'm committed to
+            building technology that makes communication easier and more accessible for everyone.
+        </p>
+        <p>And that's computational linguistics—the perfect fusion of computers and language.</p>
+    </div>
+
+    <!-- Image + tagline column -->
+    <div class="col-md-4">
+        <div class="d-flex align-items-center">
+            <img
+                src="https://media.licdn.com/dms/image/v2/C4D03AQFtpbgmaVufcw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1516825363117?e=2147483647&amp;v=beta&amp;t=gLWIkIFPmA5h9Z-Z9C9XcXAvBW_v5iZqd8IQvLyxmTQ"
+                class="img-fluid rounded-circle me-3"
+                alt="A professional headshot."
+                style="width: 150px; height: 150px;" />
+            <div>
+                <strong>Steve Braich</strong><br />
+                <i>La vie, la linguistique, et la liberté !</i>
+            </div>
+        </div>
+    </div>
+
+</div>

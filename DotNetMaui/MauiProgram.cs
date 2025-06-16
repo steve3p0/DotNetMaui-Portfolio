@@ -1,6 +1,8 @@
 ﻿using DotNetMaui.Services;
+using DotNetMaui.Shared.Pages;
 using DotNetMaui.Shared.Services;
 using Microsoft.Extensions.Logging;
+using System.Net.Http;
 
 namespace DotNetMaui
 {
@@ -18,6 +20,9 @@ namespace DotNetMaui
 
             // Add device-specific services used by the DotNetMaui.Shared project
             builder.Services.AddSingleton<IFormFactor, FormFactor>();
+
+            // Register HttpClient for dependency injection
+            builder.Services.AddHttpClient();
 
             builder.Services.AddMauiBlazorWebView();
 
